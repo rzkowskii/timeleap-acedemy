@@ -1,0 +1,142 @@
+TimeLeap Academy Application Specification
+1. Overview
+TimeLeap Academy is a comprehensive, interactive learning platform designed to educate users about TimeLeap blockchain technology, its ecosystem, and the Kenshi (KNS) token. The application is built as a single-page React application with TypeScript support and uses Tailwind CSS for styling.
+2. Core Features
+* User authentication and authorization
+* Interactive course content with modules and chapters
+* Progress tracking
+* Quiz system
+* Achievement system
+* Analytics dashboard
+* Interactive coding sandbox
+* Code sharing functionality
+* Dark mode support
+* Search functionality
+* Q&A section for each chapter
+3. Technical Stack
+* Frontend: React with TypeScript
+* Styling: Tailwind CSS
+* State Management: React Context API
+* Routing: React Router
+* Backend: Node.js with Express (mock API for this version)
+* Database: MongoDB (simulated with in-memory storage for this version)
+4. Component Structure
+4.1 Main Components
+1. App: The root component that sets up routing and global contexts.
+2. TimeLeapAcademy: The main component that orchestrates the entire application.
+3. Sidebar: Handles navigation between modules and chapters.
+4. ContentArea: Displays chapter content and manages quiz interactions.
+5. ProgressBar: Shows overall course progress.
+6. SearchBar: Enables content search functionality.
+7. Analytics: Displays user progress and quiz scores.
+8. Achievements: Shows unlocked and locked achievements.
+9. CodingSandbox: Provides an interactive JavaScript coding environment.
+10. LoginForm: Handles user authentication.
+4.2 Context Providers
+1. AuthProvider: Manages user authentication state.
+2. ThemeProvider: Manages application theme (light/dark mode).
+5. Detailed Component Specifications
+5.1 App Component
+* Sets up AuthProvider and ThemeProvider.
+* Implements main routing logic.
+* Renders TimeLeapAcademy component for authenticated users.
+* Renders LoginForm for non-authenticated users.
+5.2 TimeLeapAcademy Component
+* Manages main application state:
+    * Current module and chapter
+    * Progress
+    * Quiz scores
+    * Sidebar state (open/closed)
+    * Search results
+* Implements API calls to fetch course data, submit quiz scores, etc.
+* Renders Sidebar, SearchBar, ProgressBar, and ContentArea.
+* Handles navigation between modules and chapters.
+* Manages notifications for achievements and errors.
+5.3 Sidebar Component
+* Displays a list of all modules and their respective chapters.
+* Allows collapsing/expanding for mobile responsiveness.
+* Highlights current module and chapter.
+* Triggers module and chapter changes in the parent component.
+5.4 ContentArea Component
+* Displays chapter content, including text, images, and interactive elements.
+* Manages quiz state and submission.
+* Renders InteractiveContent for special content types (e.g., diagrams, videos).
+* Includes navigation buttons for moving between chapters.
+* Integrates the QASection for chapter-specific discussions.
+5.5 ProgressBar Component
+* Visualizes overall course progress.
+* Updates dynamically as users complete chapters and quizzes.
+5.6 SearchBar Component
+* Allows users to search for specific topics within the course.
+* Triggers search in the parent component and displays results.
+5.7 Analytics Component
+* Displays user progress statistics.
+* Shows quiz scores for each completed chapter.
+* Visualizes data using charts (e.g., bar chart for quiz scores).
+5.8 Achievements Component
+* Displays a grid of achievements, both locked and unlocked.
+* Shows achievement details, including title, description, and unlock criteria.
+* Updates dynamically as users earn new achievements.
+5.9 CodingSandbox Component
+* Provides a text area for writing JavaScript code.
+* Includes a "Run" button to execute the code.
+* Displays code output or error messages.
+* Integrates code sharing functionality.
+5.10 LoginForm Component
+* Handles user authentication (email/password).
+* Displays error messages for failed login attempts.
+* Triggers authentication in the AuthProvider.
+5.11 InteractiveContent Component
+* Renders different types of interactive content (e.g., videos, diagrams).
+* Supports embedding YouTube videos.
+* Renders Mermaid.js diagrams for flowcharts and other visualizations.
+5.12 QASection Component
+* Displays existing questions and answers for each chapter.
+* Allows users to ask new questions and answer existing ones.
+* Integrates with the backend to persist Q&A data.
+6. State Management
+* Use React Context API for global state management.
+* Implement separate contexts for authentication, theme, and course data.
+* Use local component state for UI-specific state (e.g., form inputs, toggles).
+7. API Integration
+Implement an API service with the following endpoints:
+* GET /courses: Fetch all course data.
+* GET /modules/:moduleId: Fetch a specific module.
+* GET /modules/:moduleId/chapters/:chapterId: Fetch a specific chapter.
+* POST /quiz-scores: Submit a quiz score.
+* POST /shared-code: Save and share code from the sandbox.
+* GET /shared-code/:id: Retrieve shared code.
+8. Authentication and Authorization
+* Implement JWT-based authentication.
+* Store tokens securely in localStorage.
+* Include authentication headers in API requests.
+* Implement protected routes that require authentication.
+9. Styling and Theming
+* Use Tailwind CSS for responsive design and styling.
+* Implement a theme switcher for light and dark modes.
+* Ensure all components are styled for both light and dark themes.
+10. Accessibility
+* Ensure proper heading hierarchy.
+* Use ARIA labels where necessary.
+* Ensure keyboard navigation works correctly.
+* Maintain sufficient color contrast in both light and dark modes.
+11. Performance Considerations
+* Implement lazy loading for course content.
+* Use React.memo() for components that don't need frequent re-renders.
+* Optimize images and other assets.
+12. Testing
+* Implement unit tests for individual components using Jest and React Testing Library.
+* Create integration tests for key user flows.
+* Implement end-to-end tests using Cypress.
+13. Deployment
+* Set up a CI/CD pipeline (e.g., GitHub Actions).
+* Configure deployment to a cloud platform (e.g., Vercel, Netlify).
+* Implement environment-specific configuration for development, staging, and production.
+14. Future Enhancements
+* Implement real-time collaboration features in the coding sandbox.
+* Add support for different types of quizzes (e.g., multiple choice, true/false, coding challenges).
+* Integrate a discussion forum for general course discussions.
+* Implement a recommendation system for related chapters or topics.
+* Add support for course creation and management by instructors.
+
+
